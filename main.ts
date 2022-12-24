@@ -13,13 +13,13 @@ let Zycie = 1
 let Szczescie = 10
 Spacer = 0
 Kosc = 0
+let Najedzenie = 0
 Akcja = 0
 loops.everyInterval(6000, function () {
     Szczescie += -1
-})
-loops.everyInterval(60000, function () {
-    Spacer += -1
-    Akcja = 1
+    if (Najedzenie > 2) {
+        Spacer += -1
+    }
 })
 basic.forever(function () {
     while (Zycie == 1) {
@@ -67,6 +67,7 @@ basic.forever(function () {
                 basic.showIcon(IconNames.Heart)
                 basic.clearScreen()
                 basic.pause(500)
+                Najedzenie += 1
                 Kosc = 0
                 Akcja = 0
             }
@@ -113,52 +114,7 @@ basic.forever(function () {
                     . . . . .
                     . . . . #
                     `)
-                Spacer = 0
-                Akcja = 0
-            }
-            if (Spacer < 0) {
-                basic.showLeds(`
-                    . # . . .
-                    # # . . .
-                    # # . . .
-                    . # # # .
-                    . # . # .
-                    `)
-                basic.showLeds(`
-                    . # . . .
-                    # # . . .
-                    # # . . .
-                    . # # . .
-                    . # . # .
-                    `)
-                basic.showLeds(`
-                    . # . . .
-                    # # . . .
-                    # # . . .
-                    . # # # .
-                    . # . # #
-                    `)
-                basic.showLeds(`
-                    # . . . .
-                    # . . . .
-                    # . . . .
-                    # # # . #
-                    # . # # #
-                    `)
-                basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    . . . . .
-                    # # . # .
-                    . # # # #
-                    `)
-                basic.showLeds(`
-                    . . . . .
-                    . . . . .
-                    . . . . .
-                    . . # . .
-                    . # # # .
-                    `)
+                Najedzenie = 0
                 Spacer = 0
                 Akcja = 0
             }
@@ -224,6 +180,53 @@ basic.forever(function () {
                     . # # # #
                     `)
                 Zycie = 0
+            }
+            if (Spacer < 0) {
+                basic.showLeds(`
+                    . # . . .
+                    # # . . .
+                    # # . . .
+                    . # # # .
+                    . # . # .
+                    `)
+                basic.showLeds(`
+                    . # . . .
+                    # # . . .
+                    # # . . .
+                    . # # . .
+                    . # . # .
+                    `)
+                basic.showLeds(`
+                    . # . . .
+                    # # . . .
+                    # # . . .
+                    . # # # .
+                    . # . # #
+                    `)
+                basic.showLeds(`
+                    # . . . .
+                    # . . . .
+                    # . . . .
+                    # # # . #
+                    # . # # #
+                    `)
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    # # . # .
+                    . # # # #
+                    `)
+                basic.showLeds(`
+                    . . . . .
+                    . . . . .
+                    . . . . .
+                    . . # . .
+                    . # # # .
+                    `)
+                Najedzenie += -1
+                Spacer = 0
+                Akcja = 0
             }
         }
     }
